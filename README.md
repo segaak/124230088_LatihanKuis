@@ -1,6 +1,9 @@
 # latihan_kuis
 
-A new Flutter project.
+Latihan Kuis Praktikum Pemrograman Aplikasi Mobile
+**Nama** : _Mohammad Satrio Wicaksono_
+**NIM** : _124230088_
+**Kelas** : _SI-B_
 
 ## Getting Started
 
