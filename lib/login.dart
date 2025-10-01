@@ -5,25 +5,25 @@ class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState(); 
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> { 
   String username = '';
   String password = '';
-  bool isLoginSuccess = true;
+  bool isLoginSuccess = true; 
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
+  Widget build(BuildContext context) { 
+    return SafeArea( 
+      child: Scaffold( 
+        appBar: AppBar(   
           title: const Text('Login Page'),
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.pink, 
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [ 
             _image(),
             const SizedBox(height: 16),
             _informasi(),

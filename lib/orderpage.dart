@@ -11,8 +11,13 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  final TextEditingController _jumlahController = TextEditingController();
+  int totalHarga = 0;
+
   @override
   Widget build(BuildContext context) {
+    int harga = int.parse(foodList[widget.index].price.replaceAll(RegExp(r'[^0-9]'), ''));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Order ${foodList[widget.index].name}'),
@@ -43,30 +48,41 @@ class _OrderPageState extends State<OrderPage> {
                   style: TextStyle(fontSize: 16),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 30), // Add margin top here
+                  margin: EdgeInsets.only(top: 30),
                   child: TextField(
+                    controller: _jumlahController,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Masukkan Jumlah Pesanan',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    onChanged: (value) {
+                      setState(() {
+                        int jumlah = int.tryParse(value) ?? 0;
+                        totalHarga = jumlah * harga;
+                      });
+                    },
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 15),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Show snackbar notification
                       ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('Order Berhasil Coy!'),
-                        backgroundColor: Colors.green,
-                        duration: Duration(seconds: 2),
-                      ),
+                        SnackBar(
+                          content: Text('Order Berhasil Coy!'),
+                          backgroundColor: Colors.green,
+                          duration: Duration(seconds: 2),
+                        ),
                       );
-                      // Return to homepage
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Homepage(username: '')));
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Homepage(username: ''),
+                        ),
+                      );
                     },
                     child: const Text('Submit Order'),
                     style: ElevatedButton.styleFrom(
@@ -83,6 +99,18 @@ class _OrderPageState extends State<OrderPage> {
                     ),
                   ),
                 ),
+                if (totalHarga > 0) 
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      "Total Harga: Rp $totalHarga",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),

@@ -33,17 +33,17 @@ class Homepage extends StatelessWidget {
                 child: Container(
                   color: Colors.grey[300],
                   child: Center(
-                    child: GridView.builder(
+                    child: GridView.builder(  
                       padding: EdgeInsets.all(8),
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                        childAspectRatio: 0.8,
+                        crossAxisCount: 2, 
+                        crossAxisSpacing: 8, 
+                        mainAxisSpacing: 8, 
+                        childAspectRatio: 0.8, 
                       ),
                       itemBuilder: (context, index){
                         return _makanandata(context, index);
-                      },
+                      }, 
                       itemCount: foodList.length,
                     ),
                   ),
@@ -56,20 +56,20 @@ class Homepage extends StatelessWidget {
     );
   }
   Widget _makanandata(BuildContext context, int index) {
-    return InkWell(
+    return InkWell(  
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return OrderPage(index: index);
         }));
       },
-      child: Card(
+      child: Card( 
         elevation: 2,
         child: Column(
           children: [
             Expanded(
               flex: 3,
               child: Container(
-                width: double.infinity,
+                width: double.infinity, 
                 color: Colors.grey[300],
                 child: foodList[index].imageUrls.isNotEmpty 
                   ? Image.asset(
